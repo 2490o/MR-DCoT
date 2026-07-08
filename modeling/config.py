@@ -1,0 +1,47 @@
+from detectron2.config import  CfgNode as CN
+
+def add_stn_config(cfg):
+    cfg.OFFSET_DOMAIN = ''
+    cfg.OFFSET_FROZENBN = False
+    cfg.OFFSET_DOMAIN_TEXT = ''
+    cfg.OFFSET_NAME = 0  
+    cfg.OFFSET_OPT_INTERVAL = [10]
+    cfg.OFFSET_OPT_ITERS = 0
+    cfg.AUG_PROB = 0.5
+    cfg.DOMAIN_NAME = ""
+    cfg.TEST.EVAL_SAVE_PERIOD  = 5000
+    cfg.INPUT.CLIP_WITH_IMG = False
+    cfg.INPUT.CLIP_RANDOM_CROPS = False
+    cfg.INPUT.IMAGE_JITTER = False
+    cfg.INPUT.RANDOM_CROP_SIZE = 224
+    cfg.INPUT.RANDOM_CROP_NUM = 20
+    cfg.MODEL.GLOBAL_GND = False
+    cfg.BASE_YAML = "COCO-Detection/faster_rcnn_R_50_C4_3x.yaml"
+    cfg.MODEL.RENAME = list()
+    cfg.MODEL.CLIP_IMAGE_ENCODER_NAME = 'ViT-B/32'
+    cfg.MODEL.CLIP_PRETRAINED_WEIGHTS = 'laion400m_e31'
+    cfg.MODEL.BACKBONE.UNFREEZE  = ['layer3','layer4','attnpool']
+    cfg.MODEL.USE_PROJ = True
+    cfg.MODEL.STYLE_CHANNELS = 256
+    cfg.MODEL.NUM_CLASSES = 7
+    cfg.MODEL.COT_FILES = ["cot30_1.txt", "cot30_2.txt", "cot30_3.txt"]
+    cfg.MODEL.SOURCE_STYLE_TEXT = "Sunny, Day, Driving"
+    cfg.MODEL.STYLE_COMBINE_PROB = 0.3
+    cfg.MODEL.DISENTANGLE_TAU = 1.0
+    cfg.MODEL.LOSS_WEIGHT_SC = 1.0
+    cfg.MODEL.LOSS_WEIGHT_GC = 1.0
+    cfg.MODEL.LOSS_WEIGHT_DIS = 1.0
+    cfg.MODEL.LOSS_WEIGHT_DP = 1.0
+    cfg.MODEL.COT_STYLE_SAMPLE_NUM = 0
+    cfg.MODEL.PODA_STYLE_SCALE = 1.0
+    cfg.MODEL.PODA_STYLE_RELU = True
+    cfg.MODEL.PODA_SOURCE_WEIGHT = 0.2
+    cfg.MODEL.MR_VISUAL_NOISE_STD = 0.08
+    cfg.MODEL.MR_BLUR_KERNEL = 3
+    cfg.MODEL.MR_BLUR_PROB = 0.5
+    cfg.MODEL.MR_LOSS_WEIGHT_ALIGN = 1.0
+    cfg.MODEL.MR_LOSS_WEIGHT_DIFF = 0.5
+    cfg.MODEL.MR_LOSS_WEIGHT_REG = 0.5
+    cfg.MODEL.MR_LOSS_WEIGHT_LOCAL = 0.5
+    cfg.MODEL.MR_TEMPERATURE = 0.1
+    cfg.OFFSET_OPT_LR = 1.0
