@@ -15,39 +15,3 @@ Specifically, MR-DCoT contains two key stages. First, a **Visual-Text Dual Chain
 <b>Figure 1.</b> Overview of the proposed <b>Manifold Regression with Visual-Text Dual Chain-of-Thought (MR-DCoT)</b> framework.
 MR-DCoT establishes a closed loop of <b>Simulate-to-Deviate</b> and <b>Regress-to-Rectify</b>: the Visual-Text Dual-CoT module synthesizes structured off-manifold samples, while prototype-anchored manifold regression rectifies deviant features back toward the semantic manifold for robust unknown-domain object detection.
 </p>
-
-### Datasets
-Set the environment variable DETECTRON2_DATASETS to the parent folder of the datasets
-
-```
-    path-to-parent-dir/
-        /diverseWeather
-            /daytime_clear
-            /daytime_foggy
-            ...
-        /comic
-        /watercolor
-        /VOC2007
-        /VOC2012 
-```
-
-
-
-## Training
-
-We train our models using four NVIDIA RTX 4090 GPUs.
-
-For Single-DGOD on Diverse Weather:
-
-```bash
-python train_cot_mrdcot.py --config-file configs/diverse_weather_mrdcot.yaml
-```
-
-## Evaluation
-
-Evaluate the trained model on unseen target domains:
-
-```bash
-python train_cot_mrdcot.py --config-file configs/diverse_weather_mrdcot.yaml --eval-only MODEL.WEIGHTS all_outs/...
-```
-
